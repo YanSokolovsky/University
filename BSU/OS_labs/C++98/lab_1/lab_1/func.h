@@ -1,13 +1,18 @@
 #pragma once
 #include <iostream>
 #include <time.h>
-using namespace std;
-struct mymass {
-	int* Mass;
-	int Count;
-	int NumberOf5;
-	mymass();
-	mymass(int* array, int count, int numberof5);
+
+// Define a structure for the array
+struct ArrayStruct {
+	int* Array; // Pointer to the array
+	int Size; // Size of the array
+	int NumOfDivByFive; // Number of elements divides by five in the array
+	ArrayStruct(); // Default constructor
+	ArrayStruct(int* array, int size, int numOfFives);
 };
-void FuncWroker(mymass* my);
-int* FuncMakeMass(int* count);
+
+// Function to process the array
+void ProcessArray(ArrayStruct* arr);
+
+// Function to create the array
+int* CreateArray(int* size);

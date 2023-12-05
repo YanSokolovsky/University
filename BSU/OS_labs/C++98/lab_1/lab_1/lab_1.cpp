@@ -1,48 +1,89 @@
 ﻿#include <windows.h>
 #include <iostream>
-#include <time.h>
 #include "func.h"
-using namespace std;
 
-DWORD WINAPI worker(LPVOID n)
+// Avoid using namespace std in global scope
+// using namespace std;
+
+// Worker thread function
+DWORD WINAPI workerThreadFunc(LPVOID param)
 {
-	mymass* my = (mymass*)n;
-	FuncWroker(my);
+	// Cast the input parameter to the correct type
+	ArrayStruct* myArray = static_cast<ArrayStruct*>(param);
+
+	// Call the worker function
+	ProcessArray(myArray);
+
 	return 0;
 }
-DWORD WINAPI mainThreadFunc(LPVOID n)
+
+// Main thread function
+DWORD WINAPI mainThreadFunc(LPVOID param)
 {
-	mymass *my1;
-	int a; // number of numbers in array.
-	int* mass = FuncMakeMass(&a); // array with "a" elements. In this method a get it`s value.
-	cout << endl;
-	my1 = new mymass(mass, a, 0);
-	DWORD IDThread;
-	HANDLE thread1;
-	thread1 = CreateThread(NULL, 0, worker, (void*)my1, 0, &IDThread);
-	if (thread1 == 0)
+	ArrayStruct* myArray1;
+	int arraySize; // Number of elements in the array
+
+	// Create an array with "arraySize" elements
+	int* array = CreateArray(&arraySize);
+
+	std::cout << std::endl;
+
+	// Create a new ArrayStruct object
+	myArray1 = new ArrayStruct(array, arraySize, 0);
+
+	DWORD threadID;
+	HANDLE workerThread;
+
+	// Create a new worker thread
+	workerThread = CreateThread(NULL, 0, workerThreadFunc, static_cast<void*>(myArray1), 0, &threadID);
+
+	if (workerThread == 0)
 		return 0;
-	SuspendThread(thread1);
-	cout << "the main  thread is sleeping." << endl;
+
+	// Suspend the worker thread
+	SuspendThread(workerThread);
+
+	std::cout << "the main  thread is sleeping." << std::endl;
+
+	// Sleep for 1 second
 	Sleep(1000);
-	cout << "the main thread woke up." << endl;
-	ResumeThread(thread1);
-	WaitForSingleObject(thread1, INFINITE);
-	cout << my1->NumberOf5;
-	if (thread1 == 0)
+
+	std::cout << "the main thread woke up." << std::endl;
+
+	// Resume the worker thread
+	ResumeThread(workerThread);
+
+	// Wait for the worker thread to finish
+	WaitForSingleObject(workerThread, INFINITE);
+
+	std::cout << myArray1->NumOfDivByFive;
+
+	if (workerThread == 0)
 		return 0;
-	CloseHandle(thread1);
+
+	// Close the handle to the worker thread
+	CloseHandle(workerThread);
+
 	return 0;
 }
+
 int main()
 {
-	DWORD IDThread;
-	HANDLE thread;
-	int trash = 0;
-	thread = CreateThread(NULL, 0, mainThreadFunc, (void*)trash, 0, &IDThread);
-	if (thread == NULL)
+	DWORD mainThreadID;
+	HANDLE mainThread;
+	int unusedParam = 0;
+
+	// Create a new main thread
+	mainThread = CreateThread(NULL, 0, mainThreadFunc, (void*)&unusedParam, 0, &mainThreadID);
+
+	if (mainThread == NULL)
 		return GetLastError();
-	WaitForSingleObject(thread, INFINITE);
-	CloseHandle(thread);
+
+	// Wait for the main thread to finish
+	WaitForSingleObject(mainThread, INFINITE);
+
+	// Close the handle to the main thread
+	CloseHandle(mainThread);
+
 	return 0;
 }
