@@ -1,49 +1,60 @@
 #include "pch.h"
 #include "CppUnitTest.h"
 #include <time.h> 
-#include "../childfunc.h"
+#include "../Child/childfunc.h"
 using namespace Microsoft::VisualStudio::CppUnitTestFramework;
 
 namespace ChildTest
 {
-	TEST_CLASS(sortTest)
+	// Test class for quickSort function
+	TEST_CLASS(quickSortTest)
 	{
 	public:
-		
-		TEST_METHOD(Case1)
+
+		// Test case for descending order array
+		TEST_METHOD(DescendingOrderArray)
 		{
+			// Create a descending order array
 			int* array = new int[100];
-			for (int i = 0 ; i < 100; i++)
+			for (int i = 0; i < 100; i++)
 			{
 				array[i] = 99 - i;
 			}
-			sort(array, 0, 99);
+
+			// Sort the array
+			quickSort(array, 0, 99);
+
+			// Check if the array is sorted in ascending order
 			for (int i = 0; i < 99; i++)
 			{
 				Assert::IsTrue(array[i] <= array[i + 1]);
 			}
 		}
-		TEST_METHOD(Case2)
+
+		// Test case for array with identical elements
+		TEST_METHOD(IdenticalElementsArray)
 		{
+			// Create an array with identical elements
 			int* array = new int[10];
-			array[0] = 234;
-			array[1] = 234;
-			array[2] = 234;
-			array[3] = 234;
-			array[4] = 234;
-			array[5] = 234;
-			array[6] = 234;
-			array[7] = 234;
-			array[8] = 234;
-			array[9] = 234;
-			sort(array, 0, 9);
+			for (int i = 0; i < 10; i++)
+			{
+				array[i] = 234;
+			}
+
+			// Sort the array
+			quickSort(array, 0, 9);
+
+			// Check if all elements are equal
 			for (int i = 0; i < 9; i++)
 			{
 				Assert::IsTrue(array[i] == array[i + 1]);
 			}
 		}
-		TEST_METHOD(Case3)
+
+		// Test case for array with random elements
+		TEST_METHOD(RandomElementsArray)
 		{
+			// Create an array with random elements
 			int* array = new int[10];
 			array[0] = 234;
 			array[1] = 3;
@@ -55,47 +66,60 @@ namespace ChildTest
 			array[7] = 2;
 			array[8] = 21;
 			array[9] = 1;
-			sort(array, 0, 9);
+
+			// Sort the array
+			quickSort(array, 0, 9);
+
+			// Check if the array is sorted in ascending order
 			for (int i = 0; i < 9; i++)
 			{
 				Assert::IsTrue(array[i] <= array[i + 1]);
 			}
 		}
 	};
+
+	// Test class for createArrayFromArgs function
 	TEST_CLASS(MakeMassTest)
 	{
-		TEST_METHOD(IsNUll)
+		// Test case for checking if the function returns a non-null pointer
+		TEST_METHOD(NotNullPointer)
 		{
+			// Create a char array with one element
 			char** mass = new char* [1];
-			mass[0] = "123";
-			int* a = MakeMass(mass, 1);
+			mass[0] = const_cast<char*>("123");
+
+			// Create an integer array from the char array
+			int* a = createArrayFromArgs(mass, 1);
+
+			// Check if the returned pointer is not null
 			Assert::IsNotNull(a);
 		}
-		TEST_METHOD(AccordingToElements)
+
+		// Test case for checking if the function correctly converts elements
+		TEST_METHOD(CorrectElementConversion)
 		{
+			// Create a char array with 11 elements
 			char** mass = new char* [11];
-			mass[0] = "asd";
-			mass[1] = "2";
-			mass[2] = "3";
-			mass[3] = "4";
-			mass[4] = "5";
-			mass[5] = "6";
-			mass[6] = "7";
-			mass[7] = "8";
-			mass[8] = "9";
-			mass[9] = "10";
-			mass[10] = "11";
-			int* a = MakeMass(mass, 11);
-			Assert::AreEqual(a[0], 2);
-			Assert::AreEqual(a[1], 3);
-			Assert::AreEqual(a[2], 4);
-			Assert::AreEqual(a[3], 5);
-			Assert::AreEqual(a[4], 6);
-			Assert::AreEqual(a[5], 7);
-			Assert::AreEqual(a[6], 8);
-			Assert::AreEqual(a[7], 9);
-			Assert::AreEqual(a[8], 10);
-			Assert::AreEqual(a[9], 11);
+			mass[0] = const_cast<char*>("asd");
+			mass[1] = const_cast<char*>("2");
+			mass[2] = const_cast<char*>("3");
+			mass[3] = const_cast<char*>("4");
+			mass[4] = const_cast<char*>("5");
+			mass[5] = const_cast<char*>("6");
+			mass[6] = const_cast<char*>("7");
+			mass[7] = const_cast<char*>("8");
+			mass[8] = const_cast<char*>("9");
+			mass[9] = const_cast<char*>("10");
+			mass[10] = const_cast<char*>("11");
+
+			// Create an integer array from the char array
+			int* a = createArrayFromArgs(mass, 11);
+
+			// Check if the elements are correctly converted
+			for (int i = 0; i < 10; i++)
+			{
+				Assert::AreEqual(a[i], i + 2);
+			}
 		}
 	};
 }

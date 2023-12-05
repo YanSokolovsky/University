@@ -1,11 +1,20 @@
 #include "parentfunc.h"
-string MakeComandLine(string a, string* arr, int sizeOfArray)
+#include <string>
+
+// Function to create a command line string from an array of strings
+std::string createCommandLineString(std::string executableName, std::string* array, int arraySize)
 {
-    string strForComandLine = a;
-    for (int i = 0; i < sizeOfArray; i++)
+    // Start the command line string with the name of the executable
+    std::string commandLine = executableName;
+
+    // Append each element of the array to the command 
+    // line string, separated by spaces
+    for (int i = 0; i < arraySize; i++)
     {
-        strForComandLine.append(" ");
-        strForComandLine.append(arr[i]);
+        commandLine.append(" ");
+        commandLine.append(array[i]);
     }
-    return strForComandLine;
+
+    // Return the final command line string
+    return commandLine;
 };

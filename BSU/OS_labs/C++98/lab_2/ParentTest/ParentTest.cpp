@@ -5,117 +5,134 @@ using namespace Microsoft::VisualStudio::CppUnitTestFramework;
 
 namespace ParentTest
 {
-	TEST_CLASS(MakeComandLineTest)
+	TEST_CLASS(CreateCommandLineStringTest)
 	{
 	public:
-		
-		TEST_METHOD(With1Parametr)
+
+		// Test case with one parameter
+		TEST_METHOD(WithOneParameter)
 		{
-			string a = "asd";
-			string* arr = new string[1];
-			arr[0] = "123";
-			a = MakeComandLine(a, arr, 1);
-			Assert::AreEqual(0, strcmp("asd 123", a.c_str()));
+			std::string command = "asd";
+			std::string* parameters = new std::string[1];
+			parameters[0] = "123";
+			command = createCommandLineString(command, parameters, 1);
+			Assert::AreEqual(0, strcmp("asd 123", command.c_str()));
 		}
-		TEST_METHOD(With2Parametr)
+
+		// Test case with two parameters
+		TEST_METHOD(WithTwoParameters)
 		{
-			string a = "asd";
-			string* arr = new string[2];
-			arr[0] = "123";
-			arr[1] = "123";
-			a = MakeComandLine(a, arr, 2);
-			Assert::AreEqual(0, strcmp("asd 123 123", a.c_str()));
+			std::string command = "asd";
+			std::string* parameters = new std::string[2];
+			parameters[0] = "123";
+			parameters[1] = "123";
+			command = createCommandLineString(command, parameters, 2);
+			Assert::AreEqual(0, strcmp("asd 123 123", command.c_str()));
 		}
-		TEST_METHOD(With3Parametr)
+
+		// Test case with three parameters
+		TEST_METHOD(WithThreeParameters)
 		{
-			string a = "asd";
-			string* arr = new string[3];
-			arr[0] = "123";
-			arr[1] = "123";
-			arr[2] = "123";
-			a = MakeComandLine(a, arr, 3);
-			Assert::AreEqual(0, strcmp("asd 123 123 123", a.c_str()));
+			std::string command = "asd";
+			std::string* parameters = new std::string[3];
+			parameters[0] = "123";
+			parameters[1] = "123";
+			parameters[2] = "123";
+			command = createCommandLineString(command, parameters, 3);
+			Assert::AreEqual(0, strcmp("asd 123 123 123", command.c_str()));
 		}
-		TEST_METHOD(With4Parametr)
+
+		// Test case with four parameters
+		TEST_METHOD(WithFourParameters)
 		{
-			string a = "asd";
-			string* arr = new string[4];
-			arr[0] = "123";
-			arr[1] = "123";
-			arr[2] = "123";
-			arr[3] = "123";
-			a = MakeComandLine(a, arr, 4);
-			Assert::AreEqual(0, strcmp("asd 123 123 123 123", a.c_str()));
+			std::string command = "asd";
+			std::string* parameters = new std::string[4];
+			parameters[0] = "123";
+			parameters[1] = "123";
+			parameters[2] = "123";
+			parameters[3] = "123";
+			command = createCommandLineString(command, parameters, 4);
+			Assert::AreEqual(0, strcmp("asd 123 123 123 123", command.c_str()));
 		}
-		TEST_METHOD(With5Parametr)
+
+		// Test case with five parameters
+		TEST_METHOD(WithFiveParameters)
 		{
-			string a = "asd";
-			string* arr = new string[5];
-			arr[0] = "123";
-			arr[1] = "123";
-			arr[2] = "123";
-			arr[3] = "123";
-			arr[4] = "123";
-			a = MakeComandLine(a, arr, 5);
-			Assert::AreEqual(0, strcmp("asd 123 123 123 123 123", a.c_str()));
+			std::string command = "asd";
+			std::string* parameters = new std::string[5];
+			parameters[0] = "123";
+			parameters[1] = "123";
+			parameters[2] = "123";
+			parameters[3] = "123";
+			parameters[4] = "123";
+			command = createCommandLineString(command, parameters, 5);
+			Assert::AreEqual(0, strcmp("asd 123 123 123 123 123", command.c_str()));
 		}
-		TEST_METHOD(With6Parametr)
+
+		// Test case with six parameters
+		TEST_METHOD(WithSixParameters)
 		{
-			string a = "asd";
-			string* arr = new string[6];
-			arr[0] = "123";
-			arr[1] = "123";
-			arr[2] = "123";
-			arr[3] = "123";
-			arr[4] = "123";
-			arr[5] = "123";
-			a = MakeComandLine(a, arr, 6);
-			Assert::AreEqual(0, strcmp("asd 123 123 123 123 123 123", a.c_str()));
+			std::string command = "asd";
+			std::string* parameters = new std::string[6];
+			parameters[0] = "123";
+			parameters[1] = "123";
+			parameters[2] = "123";
+			parameters[3] = "123";
+			parameters[4] = "123";
+			parameters[5] = "123";
+			command = createCommandLineString(command, parameters, 6);
+			Assert::AreEqual(0, strcmp("asd 123 123 123 123 123 123", command.c_str()));
 		}
-		TEST_METHOD(With7Parametr)
+
+		// Test case with seven parameters
+		TEST_METHOD(WithSevenParameters)
 		{
-			string a = "asd";
-			string* arr = new string[7];
-			arr[0] = "123";
-			arr[1] = "123";
-			arr[2] = "123";
-			arr[3] = "123";
-			arr[4] = "123";
-			arr[5] = "123";
-			arr[6] = "123";
-			a = MakeComandLine(a, arr, 7);
-			Assert::AreEqual(0, strcmp("asd 123 123 123 123 123 123 123", a.c_str()));
+			std::string command = "asd";
+			std::string* parameters = new std::string[7];
+			parameters[0] = "123";
+			parameters[1] = "123";
+			parameters[2] = "123";
+			parameters[3] = "123";
+			parameters[4] = "123";
+			parameters[5] = "123";
+			parameters[6] = "123";
+			command = createCommandLineString(command, parameters, 7);
+			Assert::AreEqual(0, strcmp("asd 123 123 123 123 123 123 123", command.c_str()));
 		}
-		TEST_METHOD(With8Parametr)
+
+		// Test case with eight parameters
+		TEST_METHOD(WithEightParameters)
 		{
-			string a = "asd";
-			string* arr = new string[8];
-			arr[0] = "123";
-			arr[1] = "123";
-			arr[2] = "123";
-			arr[3] = "123";
-			arr[4] = "123";
-			arr[5] = "123";
-			arr[6] = "123";
-			arr[7] = "123";
-			a = MakeComandLine(a, arr, 8);
-			Assert::AreEqual(0, strcmp("asd 123 123 123 123 123 123 123 123", a.c_str()));
+			std::string command = "asd";
+			std::string* parameters = new std::string[8];
+			parameters[0] = "123";
+			parameters[1] = "123";
+			parameters[2] = "123";
+			parameters[3] = "123";
+			parameters[4] = "123";
+			parameters[5] = "123";
+			parameters[6] = "123";
+			parameters[7] = "123";
+			command = createCommandLineString(command, parameters, 8);
+			Assert::AreEqual(0, strcmp("asd 123 123 123 123 123 123 123 123", command.c_str()));
 		}
-		TEST_METHOD(With9Parametr)
+
+		// Test case with nine parameters
+		TEST_METHOD(WithNineParameters)
 		{
-			string a = "asd";
-			string* arr = new string[9];
-			arr[0] = "123";
-			arr[1] = "123";
-			arr[2] = "123";
-			arr[3] = "123";
-			arr[4] = "123";
-			arr[5] = "123";
-			arr[6] = "123";
-			arr[7] = "123";
-			arr[8] = "123";
-			a = MakeComandLine(a, arr, 9);
-			Assert::AreEqual(0, strcmp("asd 123 123 123 123 123 123 123 123 123", a.c_str()));
+			std::string command = "asd";
+			std::string* parameters = new std::string[9];
+			parameters[0] = "123";
+			parameters[1] = "123";
+			parameters[2] = "123";
+			parameters[3] = "123";
+			parameters[4] = "123";
+			parameters[5] = "123";
+			parameters[6] = "123";
+			parameters[7] = "123";
+			parameters[8] = "123";
+			command = createCommandLineString(command, parameters, 9);
+			Assert::AreEqual(0, strcmp("asd 123 123 123 123 123 123 123 123 123", command.c_str()));
 		}
 	};
 }
