@@ -21,7 +21,7 @@ DWORD WINAPI workFunction(LPVOID st)
     WaitForSingleObject(event1, INFINITE);
 
     // Cast the passed parameter to ArrayInfo pointer
-    ArrayInfo* s = (ArrayInfo*)st;
+    ArrayInfo* s = static_cast<ArrayInfo*>(st);
 
     // Reset event1
     ResetEvent(event1);
@@ -61,7 +61,7 @@ DWORD WINAPI multiplyElementFunction(LPVOID st)
     EnterCriticalSection(&criticalSection);
 
     // Cast the passed parameter to ArrayInfo pointer
-    ArrayInfo* s = (ArrayInfo*)st;
+    ArrayInfo* s = static_cast<ArrayInfo*>(st);
 
     // Calculate the product of numeric elements in the array
     s->product = MultiplyNumericElements(s);
