@@ -1,8 +1,8 @@
 # Creating threads
 
 **The "mainThreadFunc" thread:**  
-1) creates an array of integers.  
-2) requests the stop time of the "work" thread. `CreateThread()`
+1) Creates an array of integers.  
+2) Requests the stop time of the "work" thread. `CreateThread()`
 
 **Thread "workerThreadFunc":**  
-1) outputs the number of elements divisible by 5.
+1) Outputs the number of elements divisible by 5.
