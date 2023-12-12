@@ -34,6 +34,6 @@ This program demonstrates multithreaded array processing in C++ using Windows th
 6) Notify the main thread about outputting the results of the work (the moment of starting will occur after a part of the final array is formed (when all elements from the range [A, B] are found) (use the critical section).
 
 **MultElement thread should perform the following actions (To synchronize with main thread - use manual reset event and event2):**  
-Wait for a signal from the main thread about the start of work (use the manual reset event).  
-perform the product of the received digits (if any) in the initial array.  
-Notify the main thread to output the result (use event2).   
+1) Wait for a signal from the main thread about the start of work (use the manual reset event).  
+2) Perform the product of the received digits (if any) in the initial array.  
+3) Notify the main thread to output the result (use event2).   
