@@ -1,4 +1,4 @@
-# Creating streams
+# Creating threads
 
 **The "main" thread:**  
 1) creates an array of integers.  
