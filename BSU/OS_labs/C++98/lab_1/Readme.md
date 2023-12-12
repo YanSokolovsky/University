@@ -1,4 +1,5 @@
 Creating streams
+
 The "main" thread:
 1) creates an array of integers
 2) requests the stop time of the "work" thread. 
