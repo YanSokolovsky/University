@@ -7,7 +7,6 @@
 4) Starts the specified number of Parent, Child processes.  
 5) Receives messages from each Parent, Child process, outputs them and who sent them to the console in one line.
 > ```HANDLE mutex;  
-> // Create semaphore and events  
 >	semaphore = CreateSemaphore(NULL, 2, 2, "semaphore"); // Create a semaphore with initial and maximum count of 2  
 >	eventA = CreateEvent(NULL, FALSE, FALSE, "eventA"); // Create an auto-reset event object for eventA  
 >	eventB = CreateEvent(NULL, FALSE, FALSE, "eventB"); // Create an auto-reset event object for eventB  
