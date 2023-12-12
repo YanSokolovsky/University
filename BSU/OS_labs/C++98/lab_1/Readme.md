@@ -1,6 +1,6 @@
 # Creating threads
 
-**The "main" thread:**  
+**The "mainThreadFunc" thread:**  
 1) creates an array of integers.  
 2) requests the stop time of the "work" thread. `CreateThread()`
 
