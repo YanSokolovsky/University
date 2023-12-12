@@ -15,8 +15,8 @@
 >  
 >    ZeroMemory(&startupInfo, sizeof(STARTUPINFO));  
 >    startupInfo.cb = sizeof(STARTUPINFO);```
-
-    CreatePipe(&readHandle, &writeHandle, &securityAttr, 0
+>
+>   `CreatePipe(&readHandle, &writeHandle, &securityAttr, 0)`
 
 **Process Simple:**
 1) Receives the size of the array of numbers over an anonymous channel from the Server process
