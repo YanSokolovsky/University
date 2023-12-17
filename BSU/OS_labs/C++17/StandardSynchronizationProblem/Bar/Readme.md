@@ -1,0 +1,1 @@
+# standart problem of smokers
