@@ -1,8 +1,8 @@
-Develop a multithreaded application that computes the product of matrices A (m×n) and B (n×k). 
-The elements cij of the product matrix C = A×B are computed in parallel by p threads of the same type. 
-If some thread already computes the element cij of the matrix C, the next thread that starts the computation chooses the element cij+1 if j<k and ci+1k if j=k.
-Having calculated the element of the matrix-derivative, the thread checks if there is an element that is not yet calculated.
-If there is such an element, it proceeds to its calculation. Otherwise, it sends a (user) message about the completion of its work and suspends its execution.
-The main thread, having received messages about the completion of calculations from all threads,
-displays the result on the screen and starts a thread that writes the result to the end of the protocol file.
-Each thread must have a delay in performing calculations (to give all threads a chance to work).
+В директории лежат входные текстовые файлы, проименованные следующим образом: in_<N>.dat, где N - натуральное число. 
+Каждый файл состоит из двух строк. В первой строке - число, обозначающее действие, а во второй - числа с плавающей точкой, разделенные пробелом.
+Действия могут быть следующими:
+1 - сложение
+2 - умножение
+3 - сумма квадратов
+Необходимо написать многопоточное приложение, которое выполнит требуемые действия над числами и сумму результатов запишет в файл out.dat.
+Название рабочей директории передается в виде аргумента рабочей строки (количество потоков так же)
