@@ -1,45 +1,9 @@
-﻿#include <boost\thread\mutex.hpp>
-#include <boost\thread.hpp>
-#include <iostream>
+﻿#include <iostream>
 #include <fstream>
-
+#include "func.h"
+#include <boost\thread.hpp>
 boost::mutex start;
 using namespace std;
-struct matrix {
-    int numberofrows;
-    int numberoflines;
-    int** mat;
-    boost::mutex** matofmut;
-    bool** matof;
-    matrix(int a, int b) {
-        numberofrows = a;
-        numberoflines = b;
-        mat = new int*[numberoflines];
-        matofmut = new boost::mutex*[numberoflines];
-        matof = new bool*[numberoflines];
-        for (int i = 0; i < numberoflines; i++)
-        {
-            mat[i] = new int[numberofrows];
-        }
-        for (int i = 0; i < numberoflines; i++)
-        {
-            matofmut[i] = new boost::mutex[numberofrows];
-        }
-        for (int i = 0 ; i < numberoflines; i++)
-        {
-            matof[i] = new bool[numberofrows];
-            for (int y = 0; y < numberofrows; y++)
-            {
-                matof[i][y] = false;
-            }
-        }
-        done = false;
-    }
-    int* operator[] (int a) {
-        return mat[a];
-    }
-    bool done;
-};
 void worker(matrix* result, matrix* mat1, matrix* mat2, int startpoint)
 {
     int t = startpoint;
@@ -49,14 +13,8 @@ void worker(matrix* result, matrix* mat1, matrix* mat2, int startpoint)
     {
         if (!result->matof[linecoordinate][rowcoordinate] && result->matofmut[linecoordinate][rowcoordinate].try_lock())
         {
-            result->mat[linecoordinate][rowcoordinate] = 0;
-            for (int i = 0; i < mat1->numberofrows; i++)
-            {
-                result->mat[linecoordinate][rowcoordinate] += mat1->mat[linecoordinate][i] * mat2->mat[i][rowcoordinate];
-            }
-            result->matof[linecoordinate][rowcoordinate] = true;
+            calculate(result, mat1, mat2, linecoordinate, rowcoordinate);
             t++;
-            result->matofmut[linecoordinate][rowcoordinate].unlock();
         }
         else
         {
