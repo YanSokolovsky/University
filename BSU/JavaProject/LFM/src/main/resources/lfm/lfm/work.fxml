@@ -1,0 +1,94 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.image.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.shape.*?>
+<?import javafx.scene.text.*?>
+
+<AnchorPane prefHeight="461.0" prefWidth="876.0" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="lfm.lfm.WorkController">
+   <children>
+      <Rectangle fill="#f1fff0" height="661.0" layoutX="200.0" layoutY="-200.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" width="475.0" />
+      <Rectangle fill="#b6dcff" height="461.0" stroke="#b6dcff" strokeType="INSIDE" width="200.0" />
+      <Button layoutX="48.0" layoutY="14.0" mnemonicParsing="false" onAction="#ButtonReadClicked" prefHeight="49.0" prefWidth="105.0" text="READ">
+         <font>
+            <Font size="15.0" />
+         </font>
+      </Button>
+      <Button layoutX="48.0" layoutY="88.0" mnemonicParsing="false" onAction="#ButtonWriteClicked" prefHeight="49.0" prefWidth="105.0" text="WRITE">
+         <font>
+            <Font size="15.0" />
+         </font>
+      </Button>
+      <Button layoutX="48.0" layoutY="161.0" mnemonicParsing="false" onAction="#ButtonEncodeClicked" prefHeight="49.0" prefWidth="105.0" text="ENCODE">
+         <font>
+            <Font size="15.0" />
+         </font>
+      </Button>
+      <Button layoutX="48.0" layoutY="235.0" mnemonicParsing="false" onAction="#ButtonDecodeClicked" prefHeight="49.0" prefWidth="105.0" text="DECODE">
+         <font>
+            <Font size="15.0" />
+         </font>
+      </Button>
+      <Button layoutX="48.0" layoutY="383.0" mnemonicParsing="false" onAction="#ButtonDearchiveClicked" prefHeight="49.0" prefWidth="105.0" text="DEARCHIVE">
+         <font>
+            <Font size="15.0" />
+         </font>
+      </Button>
+      <Button layoutX="48.0" layoutY="309.0" mnemonicParsing="false" onAction="#ButtonArchiveClicked" prefHeight="49.0" prefWidth="105.0" text="ARCHIVE">
+         <font>
+            <Font size="15.0" />
+         </font>
+      </Button>
+      <VBox alignment="TOP_CENTER" layoutX="201.0" prefHeight="392.0" prefWidth="475.0">
+         <children>
+            <Label fx:id="cfile" alignment="CENTER" prefHeight="48.0" prefWidth="161.0" text="choose file">
+               <font>
+                  <Font name="Arial" size="18.0" />
+               </font>
+            </Label>
+            <ImageView fx:id="image2" accessibleRole="BUTTON" fitHeight="122.0" fitWidth="127.0" onMouseClicked="#ButtonChooseFile" pickOnBounds="true" preserveRatio="true">
+               <cursor>
+                  <Cursor fx:constant="CLOSED_HAND" />
+               </cursor>
+               <image>
+                  <Image url="https://cdn-icons-png.flaticon.com/512/3767/3767084.png" />
+               </image>
+            </ImageView>
+            <ImageView fx:id="image" accessibleRole="BUTTON" fitHeight="79.0" fitWidth="182.0" pickOnBounds="true" preserveRatio="true" visible="false">
+               <image>
+                  <Image url="https://cdn-icons-png.flaticon.com/512/6786/6786483.png" />
+               </image>
+            </ImageView>
+            <ImageView fx:id="image1" fitHeight="122.0" fitWidth="115.0" pickOnBounds="true" preserveRatio="true" visible="false">
+               <image>
+                  <Image url="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ4xb6JEd8mgvDDiiS_u-HIAysjwo3GjqrNAQ&amp;usqp=CAUhttps://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ4xb6JEd8mgvDDiiS_u-HIAysjwo3GjqrNAQ&amp;usqp=CAU" />
+               </image>
+            </ImageView>
+            <RadioButton fx:id="b1" mnemonicParsing="false" selected="true" text="rar" visible="false">
+               <toggleGroup>
+                  <ToggleGroup fx:id="r" />
+               </toggleGroup></RadioButton>
+            <RadioButton fx:id="b2" mnemonicParsing="false" text="zip" toggleGroup="$r" visible="false" />
+         </children>
+      </VBox>
+      <Rectangle fill="#b6dcff" height="461.0" layoutX="675.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" width="200.0" />
+      <Button layoutX="723.0" layoutY="14.0" mnemonicParsing="false" onAction="#CheckBuffer" prefHeight="49.0" prefWidth="105.0" text="check buffer">
+         <font>
+            <Font name="Arial" size="15.0" />
+         </font>
+      </Button>
+      <TextArea fx:id="area" layoutX="675.0" layoutY="63.0" prefHeight="315.0" prefWidth="200.0" />
+      <Button layoutX="723.0" layoutY="378.0" mnemonicParsing="false" onAction="#ClearBuffer" prefHeight="49.0" prefWidth="105.0" text="clear buffer">
+         <font>
+            <Font size="15.0" />
+         </font>
+      </Button>
+      <Button layoutX="338.0" layoutY="403.0" mnemonicParsing="false" onAction="#Calculate" prefHeight="49.0" prefWidth="200.0" text="calculate data in buffer">
+         <font>
+            <Font size="15.0" />
+         </font>
+      </Button>
+   </children>
+</AnchorPane>
